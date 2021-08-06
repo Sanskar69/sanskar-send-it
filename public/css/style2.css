@@ -1,0 +1,287 @@
+:root{
+    --main-bg-color : #eff5fe;
+    --border-color : #0288d147;
+    --container-width : 25rem;
+}
+
+body,html{
+    margin:0;
+    padding:0;
+    font-family: system-ui;
+    height: 100%;
+    background: var(--main-bg-color);
+    overflow: hidden;
+}
+
+body,.drop-zone, .upload-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+body{
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+.upload-container{
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: gray 0 0 20px -10px;
+}
+
+.drop-zone{
+    width: var(--container-width);
+    min-height: 12rem;
+    border-radius: 15px;
+    border : 2px dashed var(--border-color);
+    margin:20px;
+    transition: all 0.25s ease;
+}
+
+.dragged.drop-zone{
+    background: var(--main-bg-color) ;
+    border-color: #1e81ce;
+}
+
+.icon-container{
+    position: relative;
+    width:75px;
+    height: 100px;
+}
+
+.icon-container img{
+    width:75px;
+    position: absolute;
+    transform-origin: bottom;
+    transition: transform 250ms ease-in-out;
+}
+.icon-container .center{
+    z-index: 2;
+}
+.icon-container .right ,.icon-container .left{
+    filter: grayscale(.6);
+    transform: scale(.9);
+}
+
+
+.dragged .icon-container .right{
+    transform: rotate(10deg) translateX(15px) scale(.9) ;
+}
+.dragged .icon-container .left{
+    transform: rotate(-10deg) translateX(-15px) scale(.9);
+}
+.dragged .icon-container .center{
+    transform:  translateY(-2px) ;
+}
+
+.browseBtn{
+    color:#1e81ce;
+    cursor: pointer;
+}
+.title{
+    font-weight: 600;
+}
+
+#fileInput{
+    display:none;
+}
+
+.progress-container{
+    width : var(--container-width);
+    height: 75px;
+    border : 2px dashed var(--border-color);
+    border-radius: 15px;
+    margin-bottom: 25px;
+    position: relative;
+    display: none;
+}
+
+.progress-container .bg-progress{
+    background-color: var(--main-bg-color);
+    width: 0;
+    height:100%;
+    border-radius: 15px;
+    position: absolute;
+}
+
+.progress-container .inner-container{
+    position: absolute;
+    z-index: 1;
+    margin: 15px 15px;
+    width: calc(100% - 30px);
+}
+
+.percent-container{
+    font-size: 13px;
+    margin:7px;
+    opacity: 0.8;
+    font-weight: bold;
+}
+
+.progress-bar{
+    height : 3px;
+    width: 100%;
+    background: var(--border-color) ;
+    border-radius: 15px;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition:transform .25s linear;
+}
+
+.inner-container .title{
+    font-size: 14px;
+}
+.sharing-container .input-container{
+    position: relative;
+}
+.sharing-container{
+    width: var(--container-width);
+    margin-bottom: 20px;
+    /* display : none; */
+}
+
+.sharing-container .input-container input{
+    width: var(--container-width);
+    border : 2px dashed var(--border-color);
+    border-radius : 15px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background: var(--main-bg-color);
+    outline: none;
+}
+
+.input-container i{
+    position: absolute;
+    font-size:22px;
+    right: 7px;
+    top:10px;
+    background: var(--main-bg-color);
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.sharing-container p{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bolder;
+    opacity: 0.7;
+}
+
+.email-container{
+    display: flex;
+    align-items: center;
+    
+}
+
+.email-container form{
+    width: 100%;
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    padding:15px
+}
+
+.email-container label{
+    font-size: 15px;
+    font-weight: bolder;
+    opacity: 0.8;
+}
+
+.field input{
+    border : none;
+    border-radius: 5px;
+    outline:none;
+    padding:2px 8px;
+    border-bottom: 2px solid var(--border-color);
+    text-align: center;
+}
+
+.email-container button{
+    background: var(--main-bg-color);
+    border: none;
+    font-size:18px;
+    color : #1e81ce ;
+    border-radius : 15px;
+    padding : 5px 40px;
+    margin  : 18px 0 0 5px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.email-container button:hover{
+    color: var(--main-bg-color);
+    background: #1e82cea4 ;
+}
+
+
+.email-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+.email-container .field{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:5px;
+}
+
+.alerting{
+    position: absolute;
+    bottom:10px;
+    left: 50%;
+    font-size: 16px;
+    transform: translate(-50% , 60px);
+    transition: transform  ease-in-out 0.2s ;
+    padding: 10px 20px;
+    border-radius:15px;
+    font-weight: 600;
+    color: var(--main-bg-color);
+    background: #1e82cea4 ;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1) , 0px 4px 6px -2px rgba(0,0,0,0.05) ;
+}
+
+.upload-img{
+    background: url('./imgUpload.svg') no-repeat center;
+    background-size: contain;
+    height: 50vh;
+    width: 20vw ;
+    margin:20px
+}
+
+@media screen and (max-width: 1200px){
+    :root{
+        --container-width: 20rem;
+    }
+}
+@media screen and (max-width: 900px){
+    :root{
+        --container-width: 17rem;
+    }
+}
+@media screen and (max-width: 800px){
+    :root{
+        --container-width: 18rem;
+    }
+    .upload-img{
+        display:none;
+    }
+    .email-container .field{
+        flex-direction: column;
+        width: 250px;
+    }    
+
+}
+
+@media screen and (max-width:420px){
+    :root{
+        --container-width: 16rem;
+    }
+    .email-container .field{
+        flex-direction: column;
+        width: 230px;
+    }    
+}
